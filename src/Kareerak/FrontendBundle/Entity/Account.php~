@@ -1,0 +1,67 @@
+<?php
+
+namespace Kareerak\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Kareerak\FrontendBundle\Entity\Account
+ *
+ * @ORM\Table(name="account")
+ * @ORM\Entity
+ */
+class Account
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $email
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string $password
+     *
+     * @ORM\Column(name="password", type="string", length=40, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string $salt
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
+
+    /**
+     * @var string $slug
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var integer $level
+     *
+     * @ORM\Column(name="level", type="integer", nullable=true)
+     */
+    private $level;
+
+    /**
+     * @var datetime $creationTimestamp
+     *
+     * @ORM\Column(name="creation_timestamp", type="datetime", nullable=false)
+     */
+    private $creationTimestamp;
+
+
+}

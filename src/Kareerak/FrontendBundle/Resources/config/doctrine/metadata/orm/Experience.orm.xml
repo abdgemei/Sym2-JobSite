@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Experience" table="experience">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="startDate" type="date" column="start_date"/>
+    <field name="endDate" type="date" column="end_date"/>
+    <field name="jobTitle" type="string" column="job_title" length="255"/>
+    <field name="workDetails" type="string" column="work_details" length="5000"/>
+    <field name="position" type="string" column="position" length="255"/>
+    <field name="numberOfSubordinates" type="integer" column="number_of_subordinates"/>
+    <field name="reasonsForLeaving" type="string" column="reasons_for_leaving" length="5000"/>
+    <many-to-one field="careerLevel" target-entity="CareerLevel" orphan-removal="">
+      <join-columns>
+        <join-column name="career_level_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="jobType" target-entity="JobType" orphan-removal="">
+      <join-columns>
+        <join-column name="job_type_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="company" target-entity="Company" orphan-removal="">
+      <join-columns>
+        <join-column name="company_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="country" target-entity="Country" orphan-removal="">
+      <join-columns>
+        <join-column name="country_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="city" target-entity="City" orphan-removal="">
+      <join-columns>
+        <join-column name="city_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="area" target-entity="Area" orphan-removal="">
+      <join-columns>
+        <join-column name="area_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="industry" target-entity="Industry" orphan-removal="">
+      <join-columns>
+        <join-column name="industry_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

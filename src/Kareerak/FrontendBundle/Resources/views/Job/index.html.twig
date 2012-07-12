@@ -1,0 +1,59 @@
+<h1>Job list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Jobtitle</th>
+            <th>Description</th>
+            <th>Slug</th>
+            <th>Jobpostcreationtimestamp</th>
+            <th>Jobpostexpirydate</th>
+            <th>Jobstartdate</th>
+            <th>Experienceneeded</th>
+            <th>Degreeneeded</th>
+            <th>Majorneeded</th>
+            <th>Universitypreferred</th>
+            <th>Concentrationpreferred</th>
+            <th>Workinghours</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('job_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.jobTitle }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.slug }}</td>
+            <td>{% if entity.jobPostCreationTimestamp %}{{ entity.jobPostCreationTimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.jobPostExpiryDate %}{{ entity.jobPostExpiryDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.jobStartDate %}{{ entity.jobStartDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.experienceNeeded }}</td>
+            <td>{{ entity.degreeNeeded }}</td>
+            <td>{{ entity.majorNeeded }}</td>
+            <td>{{ entity.universityPreferred }}</td>
+            <td>{{ entity.concentrationPreferred }}</td>
+            <td>{{ entity.workingHours }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('job_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('job_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('job_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Seeker" table="seeker">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fname" type="string" column="fname" length="255"/>
+    <field name="lname" type="string" column="lname" length="255"/>
+    <field name="addressLine1" type="string" column="address_line_1" length="255"/>
+    <field name="addressLine2" type="string" column="address_line_2" length="255"/>
+    <field name="website" type="string" column="website" length="255"/>
+    <field name="blog" type="string" column="blog" length="255"/>
+    <field name="facebookUri" type="string" column="facebook_uri" length="255"/>
+    <field name="twitterUri" type="string" column="twitter_uri" length="255"/>
+    <field name="linkedinUri" type="string" column="linkedin_uri" length="255"/>
+    <field name="dob" type="date" column="dob"/>
+    <field name="gender" type="string" column="gender" length="255"/>
+    <field name="nationality" type="string" column="nationality" length="255"/>
+    <field name="maritalStatus" type="string" column="marital_status" length="255"/>
+    <many-to-many field="certification" target-entity="Certification" inversed-by="seeker">
+      <join-table name="seeker_certification">
+        <join-columns>
+          <join-column name="seeker_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="certification_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="language" target-entity="Language" mapped-by="seeker"/>
+    <many-to-many field="skill" target-entity="Skill" inversed-by="seeker">
+      <join-table name="seeker_skill">
+        <join-columns>
+          <join-column name="seeker_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="skill_id" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-one field="area" target-entity="Area" orphan-removal="">
+      <join-columns>
+        <join-column name="area_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="account" target-entity="Account" orphan-removal="">
+      <join-columns>
+        <join-column name="account_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="attCv" target-entity="Attachment" orphan-removal="">
+      <join-columns>
+        <join-column name="att_cv_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="country" target-entity="Country" orphan-removal="">
+      <join-columns>
+        <join-column name="country_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="city" target-entity="City" orphan-removal="">
+      <join-columns>
+        <join-column name="city_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

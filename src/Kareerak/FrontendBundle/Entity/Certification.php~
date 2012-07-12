@@ -1,0 +1,78 @@
+<?php
+
+namespace Kareerak\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Kareerak\FrontendBundle\Entity\Certification
+ *
+ * @ORM\Table(name="certification")
+ * @ORM\Entity
+ */
+class Certification
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string $description
+     *
+     * @ORM\Column(name="description", type="string", length=5000, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var date $yearCertified
+     *
+     * @ORM\Column(name="year_certified", type="date", nullable=true)
+     */
+    private $yearCertified;
+
+    /**
+     * @var date $startDate
+     *
+     * @ORM\Column(name="start_date", type="date", nullable=true)
+     */
+    private $startDate;
+
+    /**
+     * @var date $endDate
+     *
+     * @ORM\Column(name="end_date", type="date", nullable=true)
+     */
+    private $endDate;
+
+    /**
+     * @var string $institutionName
+     *
+     * @ORM\Column(name="institution_name", type="string", length=255, nullable=true)
+     */
+    private $institutionName;
+
+    /**
+     * @var Seeker
+     *
+     * @ORM\ManyToMany(targetEntity="Seeker", mappedBy="certification")
+     */
+    private $seeker;
+
+    public function __construct()
+    {
+        $this->seeker = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

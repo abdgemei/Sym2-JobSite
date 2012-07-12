@@ -1,0 +1,67 @@
+<?php
+
+namespace Kareerak\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Kareerak\FrontendBundle\Entity\MembershipType
+ *
+ * @ORM\Table(name="membership_type")
+ * @ORM\Entity
+ */
+class MembershipType
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string $logoPath
+     *
+     * @ORM\Column(name="logo_path", type="string", length=255, nullable=true)
+     */
+    private $logoPath;
+
+    /**
+     * @var string $slug
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     */
+    private $slug;
+
+    /**
+     * @var string $monthlyFee
+     *
+     * @ORM\Column(name="monthly_fee", type="string", length=255, nullable=true)
+     */
+    private $monthlyFee;
+
+    /**
+     * @var integer $allowedPosts
+     *
+     * @ORM\Column(name="allowed_posts", type="integer", nullable=true)
+     */
+    private $allowedPosts;
+
+    /**
+     * @var integer $daysPostIsValid
+     *
+     * @ORM\Column(name="days_post_is_valid", type="integer", nullable=true)
+     */
+    private $daysPostIsValid;
+
+
+}

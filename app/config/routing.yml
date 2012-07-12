@@ -1,0 +1,20 @@
+KareerakFrontendBundle:
+    resource: "@KareerakFrontendBundle/Resources/config/routing.yml"
+    prefix:   /home/
+
+AcmeTestBundle:
+    resource: "@AcmeTestBundle/Resources/config/routing.yml"
+    prefix:   /acme/
+    
+login:
+    pattern: /login
+    defaults: { _controller: KareerakFrontendBundle:Security:login }
+
+login_check:
+    pattern: /login_check
+   
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

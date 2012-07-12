@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Employer" table="employer">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="255"/>
+    <field name="tagline" type="string" column="tagline" length="255"/>
+    <field name="description" type="string" column="description" length="5000"/>
+    <field name="logoPath" type="string" column="logo_path" length="255"/>
+    <field name="addressLine1" type="string" column="address_line_1" length="255"/>
+    <field name="addressLine2" type="string" column="address_line_2" length="255"/>
+    <field name="numberOfEmployees" type="integer" column="number_of_employees"/>
+    <field name="weekends" type="string" column="weekends" length="255"/>
+    <field name="workingHours" type="string" column="working_hours" length="255"/>
+    <field name="longitude" type="decimal" column="longitude"/>
+    <field name="latitude" type="decimal" column="latitude"/>
+    <many-to-one field="area" target-entity="Area" orphan-removal="">
+      <join-columns>
+        <join-column name="area_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="account" target-entity="Account" orphan-removal="">
+      <join-columns>
+        <join-column name="account_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="membershipType" target-entity="MembershipType" orphan-removal="">
+      <join-columns>
+        <join-column name="membership_type_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="country" target-entity="Country" orphan-removal="">
+      <join-columns>
+        <join-column name="country_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="city" target-entity="City" orphan-removal="">
+      <join-columns>
+        <join-column name="city_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

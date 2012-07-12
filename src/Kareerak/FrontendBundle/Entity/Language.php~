@@ -1,0 +1,58 @@
+<?php
+
+namespace Kareerak\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Kareerak\FrontendBundle\Entity\Language
+ *
+ * @ORM\Table(name="language")
+ * @ORM\Entity
+ */
+class Language
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer $speakingPopulation
+     *
+     * @ORM\Column(name="speaking_population", type="integer", nullable=true)
+     */
+    private $speakingPopulation;
+
+    /**
+     * @var Seeker
+     *
+     * @ORM\ManyToMany(targetEntity="Seeker", inversedBy="language")
+     * @ORM\JoinTable(name="seeker_language",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="language_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="seeker_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $seeker;
+
+    public function __construct()
+    {
+        $this->seeker = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

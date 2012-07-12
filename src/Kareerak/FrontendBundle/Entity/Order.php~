@@ -1,0 +1,59 @@
+<?php
+
+namespace Kareerak\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Kareerak\FrontendBundle\Entity\Order
+ *
+ * @ORM\Table(name="order")
+ * @ORM\Entity
+ */
+class Order
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var datetime $timestamp
+     *
+     * @ORM\Column(name="timestamp", type="datetime", nullable=false)
+     */
+    private $timestamp;
+
+    /**
+     * @var string $status
+     *
+     * @ORM\Column(name="status", type="string", length=255, nullable=true)
+     */
+    private $status;
+
+    /**
+     * @var Employer
+     *
+     * @ORM\ManyToOne(targetEntity="Employer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="employer_id", referencedColumnName="id")
+     * })
+     */
+    private $employer;
+
+    /**
+     * @var MembershipType
+     *
+     * @ORM\ManyToOne(targetEntity="MembershipType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="mtype_id", referencedColumnName="id")
+     * })
+     */
+    private $mtype;
+
+
+}
