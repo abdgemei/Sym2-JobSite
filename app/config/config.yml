@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
-    - { resource: @KareerakFrontendBundle/Resources/config/services.yml }
+  #  - { resource: @KareerakFrontendBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~

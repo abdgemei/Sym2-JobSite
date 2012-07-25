@@ -12,7 +12,7 @@ security:
 
     providers:
         main:
-            entity: { class: Kareerak\FrontendBundle\Entity\Account , property: email }
+           # entity: { class: Kareerak\FrontendBundle\Entity\Account , property: email }
         #in_memory:
             #users:
                 #user:  { password: userpass, roles: [ 'ROLE_USER' ] }

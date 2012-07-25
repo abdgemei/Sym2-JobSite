@@ -5,7 +5,3 @@ KareerakFrontendBundle_homepage:
 KareerakFrontendBundle_login:
     pattern: /login
     defaults: { _controller: KareerakFrontendBundle:Security:login }
-
-KareerakFrontendBundle_jobs:
-    resource: "@KareerakFrontendBundle/Resources/config/routing/job.yml"
-    prefix:   /job
